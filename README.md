@@ -25,6 +25,15 @@ MnC Resource Hub/
 ...
 ```
 
+### Useful Links:
+[Maths Dept](https://www.manipal.edu/mit/department-faculty/department-list/mathematics.html "MIT-M: Dept. of Mathematics") 
+[B.Tech MnC](https://www.manipal.edu/mit/program-list/btech/BTech-Mathematics-and-Computing.html "MIT-M: B.Tech MnC")
+
+
+
+
+
+
  ### Note: Folders and documents will be updated every two weeks during the course of the semester
 
 
