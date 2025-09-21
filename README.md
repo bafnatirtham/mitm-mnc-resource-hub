@@ -1,7 +1,9 @@
 # MIT Manipal Mathematics and Computing Resource Hub
 
 A centralized resource hub for **B.Tech Mathematics & Computing** students at MIT, Manipal.  
-This repository collects and organizes lecture notes, reference materials, PDFs, and other study resources across semesters.  
+
+This repository collects and organizes lecture notes, reference materials, PDFs, and other study resources across semesters. 
+Each subject contains its respective Course Plan, Lecture Materials, Previous Years Papers, Reference Books for easy access.
 
 ---
 
