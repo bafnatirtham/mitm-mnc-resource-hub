@@ -25,6 +25,42 @@ MnC Resource Hub/
 ...
 ```
 
+---
+
+## 🔍 Features
+- **Centralized repository** – no more scattered notes across WhatsApp, LMS, or drives.  
+- **Easy navigation** – structured by year and semester.  
+- **Searchable** – GitHub search lets you quickly find any file or keyword.  
+- **Version control** – ensures updates and corrections are tracked.  
+
+---
+
+## 🚀 How to Use
+1. Browse the folders by year and semester.  
+2. Open or download PDFs directly from GitHub.  
+3. Use GitHub’s search bar to find topics instantly.  
+
+---
+
+## 🤝 Contributions
+- Students can contribute by adding their own notes, resources, or updated versions.  
+- To contribute:  
+  1. Fork this repository  
+  2. Add your resources under the correct semester folder  
+  3. Submit a Pull Request  
+
+---
+
+## 📧 Maintainers
+This repository is maintained by **MnC students** at MIT Manipal.  
+If you find issues or want to suggest improvements, feel free to raise an **Issue**.  
+
+---
+
+## ⚠️ Disclaimer
+These resources are for **academic use only** by MIT MnC students.  
+Please do not share outside the community without permission.  
+
 ### Useful Links:
 [Maths Dept](https://www.manipal.edu/mit/department-faculty/department-list/mathematics.html "MIT-M: Dept. of Mathematics") 
 
