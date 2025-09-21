@@ -1,2 +1,27 @@
-# mitm-mnc-resource-hub
-Resource Hub of B. Tech Mathematics and Computing, MIT Manipal
+# MIT Manipal Mathematics and Computing Resource Hub
+
+A centralized resource hub for **B.Tech Mathematics & Computing** students at MIT, Manipal.  
+This repository collects and organizes lecture notes, reference materials, PDFs, and other study resources across semesters.  
+
+---
+
+## 📂 Repository Structure
+
+The resources are organized by **semester** for easy navigation. Example:
+```
+MnC Resource Hub/
+├── Semester 3
+│ ├── Subject 1
+| |   ├── Lecture Materials
+| |   ├── Course Plans
+| |
+│ └── Subject 2
+│
+├── Semester 4
+.....
+...
+```
+
+
+
+
