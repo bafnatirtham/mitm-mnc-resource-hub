@@ -21,9 +21,11 @@ MnC Resource Hub/
 │ └── Subject 2
 │
 ├── Semester 4
-.....
+....
 ...
 ```
+
+ ### Note: Folders and documents will be updated every two weeks during the course of the semester
 
 
 
