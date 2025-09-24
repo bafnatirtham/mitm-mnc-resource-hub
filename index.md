@@ -11,7 +11,7 @@ This repository contains lecture notes, lab materials, PYQs, and reference PDFs 
 - [General Resources](General/)
 
 ### Semester 3
-- [Data Structures](3rd%20Semester/CSS%202101-Data%20Structures/)
+- [Data Structures](./3rd%20Semester/CSS%202101-Data%20Structures/)
 - [Advanced Programming](3rd%20Semester/CSS%202130-Advanced%20Programming/)
 - [Computational Linear Algebra](3rd%20Semester/MAT%202135-Computational%20Linear%20Algebra/)
 - [Elementary Number Theory](3rd%20Semester/MAT%202137-Elementary%20Number%20Theory/)
