@@ -7,22 +7,22 @@ This repository contains lecture notes, lab materials, PYQs, and reference PDFs 
 
 ## 📂 Browse by Semester
 
-### General (Common First-Year Resources)
+### General (Common Resources)
 - [General Resources](General/)
 
 ### Semester 3
 - [Data Structures](./3rd%20Semester/CSS%202101-Data%20Structures/)
-- [Advanced Programming](3rd%20Semester/CSS%202130-Advanced%20Programming/)
-- [Computational Linear Algebra](3rd%20Semester/MAT%202135-Computational%20Linear%20Algebra/)
-- [Elementary Number Theory](3rd%20Semester/MAT%202137-Elementary%20Number%20Theory/)
-- [Discrete Mathematics](3rd%20Semester/MAT%202138-Discrete%20Mathematics/)
-- [Probability and Stochastic Processes](3rd%20Semester/MAT%202134-Probability%20and%20Stochastic%20Processes/)
+- [Advanced Programming](./3rd%20Semester/CSS%202130-Advanced%20Programming/)
+- [Computational Linear Algebra](./3rd%20Semester/MAT%202135-Computational%20Linear%20Algebra/)
+- [Elementary Number Theory](./3rd%20Semester/MAT%202137-Elementary%20Number%20Theory/)
+- [Discrete Mathematics](./3rd%20Semester/MAT%202138-Discrete%20Mathematics/)
+- [Probability and Stochastic Processes](./3rd%20Semester/MAT%202134-Probability%20and%20Stochastic%20Processes/)
 
 ### Semester 4
-- [Fundamentals of Machine Learning](4th%20Semester/Fundamentals%20of%20Machine%20Learning/)
-- [Mathematical Logic](4th%20Semester/Mathematical%20Logic/)
-- [Real Analysis](4th%20Semester/Real%20Analysis/)
-- [Vector Analysis and Complex Variables](4th%20Semester/Vector%20Analysis%20and%20Complex%20Variables/)
+- [Fundamentals of Machine Learning](./4th%20Semester/Fundamentals%20of%20Machine%20Learning/)
+- [Mathematical Logic](./4th%20Semester/Mathematical%20Logic/)
+- [Real Analysis](./4th%20Semester/Real%20Analysis/)
+- [Vector Analysis and Complex Variables](./4th%20Semester/Vector%20Analysis%20and%20Complex%20Variables/)
 
 
 ---
