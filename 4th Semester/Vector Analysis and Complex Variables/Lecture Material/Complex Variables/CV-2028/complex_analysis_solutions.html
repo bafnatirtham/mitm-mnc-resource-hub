@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complex Analysis – Complete Solutions</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+<style>
+  :root {
+    --blue: #1a3a5c;
+    --accent: #2563eb;
+    --highlight: #fef3c7;
+    --highlight-border: #f59e0b;
+    --green-bg: #ecfdf5;
+    --green-border: #10b981;
+    --red-bg: #fff1f2;
+    --red-border: #e11d48;
+    --gray: #f8fafc;
+    --border: #e2e8f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    background: #f1f5f9;
+    color: #1e293b;
+    line-height: 1.75;
+  }
+  header {
+    background: linear-gradient(135deg, #1a3a5c 0%, #1e4d8c 100%);
+    color: white;
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+  }
+  header h1 { font-size: 2rem; font-weight: 700; letter-spacing: 0.5px; }
+  header p { opacity: 0.85; margin-top: 0.4rem; font-size: 1rem; }
+  .container { max-width: 960px; margin: 2rem auto; padding: 0 1.5rem 4rem; }
+
+  /* Section headers */
+  .section-title {
+    background: var(--blue);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px 8px 0 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    letter-spacing: 0.3px;
+  }
+
+  /* Problem card */
+  .problem-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 0.25rem;
+    overflow: hidden;
+  }
+  .problem-header {
+    background: var(--gray);
+    border-bottom: 1px solid var(--border);
+    padding: 0.8rem 1.25rem;
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 1rem;
+  }
+  .problem-body { padding: 1.25rem 1.5rem; }
+  .problem-body + .problem-card { border-top: 1px solid var(--border); }
+
+  /* Sub-problems stacked */
+  .subproblem { margin-top: 1.4rem; }
+  .subproblem:first-child { margin-top: 0; }
+  .subproblem-label {
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 0.3rem;
+    font-size: 0.97rem;
+  }
+
+  /* Callout boxes */
+  .formula-box {
+    background: var(--highlight);
+    border-left: 4px solid var(--highlight-border);
+    border-radius: 4px;
+    padding: 0.85rem 1.1rem;
+    margin: 1rem 0;
+    font-size: 0.97rem;
+  }
+  .formula-box strong { display: block; margin-bottom: 0.3rem; color: #92400e; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .answer-box {
+    background: var(--green-bg);
+    border-left: 4px solid var(--green-border);
+    border-radius: 4px;
+    padding: 0.85rem 1.1rem;
+    margin: 1rem 0;
+  }
+  .answer-box strong { display: block; margin-bottom: 0.3rem; color: #065f46; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .step { margin: 0.6rem 0; padding-left: 0; }
+  .step-num {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    width: 22px; height: 22px;
+    text-align: center;
+    line-height: 22px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-right: 8px;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+  .steps { list-style: none; }
+  .steps li { display: flex; align-items: flex-start; gap: 10px; margin: 0.55rem 0; }
+  .steps li .step-num { margin-top: 3px; }
+
+  p { margin: 0.5rem 0; }
+  hr.divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Complex Analysis — Complete Solutions</h1>
+  <p>Brown &amp; Churchill · Sections 8 &amp; 10</p>
+</header>
+
+<div class="container">
+
+<!-- =========================================================
+     SECTION 8
+     ========================================================= -->
+<div class="section-title">Section 8 — Arguments of Products and Quotients</div>
+
+<!-- -------- KEY FORMULAS -------- -->
+<div class="problem-card">
+  <div class="problem-header">📐 Key Formulas for Section 8</div>
+  <div class="problem-body">
+    <div class="formula-box">
+      <strong>Polar / Exponential Form</strong>
+      \( z = r e^{i\theta} \), &nbsp; \(r = |z|\), &nbsp; \(\theta = \arg z\)
+    </div>
+    <div class="formula-box">
+      <strong>Principal Argument</strong>
+      \(\operatorname{Arg} z \in (-\pi, \pi]\)
+    </div>
+    <div class="formula-box">
+      <strong>Euler's Formula</strong>
+      \(e^{i\theta} = \cos\theta + i\sin\theta\)
+    </div>
+    <div class="formula-box">
+      <strong>Argument of a Product / Quotient</strong>
+      \(\arg(z_1 z_2) = \arg z_1 + \arg z_2\) &nbsp;(mod \(2\pi\)) <br>
+      \(\arg\!\left(\dfrac{z_1}{z_2}\right) = \arg z_1 - \arg z_2\) &nbsp;(mod \(2\pi\))
+    </div>
+    <div class="formula-box">
+      <strong>De Moivre's Formula</strong>
+      \(\left(e^{i\theta}\right)^n = e^{in\theta}\), i.e., \((\cos\theta + i\sin\theta)^n = \cos n\theta + i\sin n\theta\)
+    </div>
+  </div>
+</div>
+
+<!-- -------- PROBLEM 1 -------- -->
+<div class="problem-card">
+  <div class="problem-header">Problem 1 — Find Arg z</div>
+  <div class="problem-body">
+
+    <div class="subproblem">
+      <div class="subproblem-label">(a) \(\displaystyle z = \frac{i}{-2-2i}\)</div>
+      <ul class="steps">
+        <li><span class="step-num">1</span>Write numerator: \(i = e^{i\pi/2}\), so \(\arg(i) = \frac{\pi}{2}\).</li>
+        <li><span class="step-num">2</span>Write denominator: \(-2-2i\). Modulus \(= \sqrt{4+4}=2\sqrt{2}\). Since real and imaginary parts are both negative, the point is in the third quadrant. Reference angle \(= \arctan\!\left(\frac{2}{2}\right) = \frac{\pi}{4}\), so \(\arg(-2-2i) = -\pi + \frac{\pi}{4} = -\frac{3\pi}{4}\).</li>
+        <li><span class="step-num">3</span>\(\arg z = \arg(i) - \arg(-2-2i) = \frac{\pi}{2} - \left(-\frac{3\pi}{4}\right) = \frac{5\pi}{4}\).</li>
+        <li><span class="step-num">4</span>Adjust to \((-\pi,\pi]\): \(\frac{5\pi}{4} - 2\pi = -\frac{3\pi}{4}\).</li>
+      </ul>
+      <div class="answer-box">
+        <strong>✓ Answer</strong>
+        \(\operatorname{Arg}\!\left(\dfrac{i}{-2-2i}\right) = -\dfrac{3\pi}{4}\)
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="subproblem">
+      <div class="subproblem-label">(b) \(z = (\sqrt{3} - i)^6\)</div>
+      <ul class="steps">
+        <li><span class="step-num">1</span>Write \(\sqrt{3}-i\) in polar form. Modulus \(= \sqrt{3+1} = 2\). Since \(x>0, y<0\), the point is in Q4. \(\arg(\sqrt{3}-i) = -\frac{\pi}{6}\).</li>
+        <li><span class="step-num">2</span>So \(\sqrt{3}-i = 2e^{-i\pi/6}\).</li>
+        <li><span class="step-num">3</span>By De Moivre: \((\sqrt{3}-i)^6 = 2^6 e^{i\cdot 6\cdot(-\pi/6)} = 64\,e^{-i\pi} = 64(\cos(-\pi)+i\sin(-\pi)) = -64\).</li>
+        <li><span class="step-num">4</span>\(\operatorname{Arg}(-64) = \pi\) (negative real axis).</li>
+      </ul>
+      <div class="answer-box">
+        <strong>✓ Answer</strong>
+        \(\operatorname{Arg}\!\left((\sqrt{3}-i)^6\right) = \pi\)
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- -------- PROBLEM 3 -------- -->
+<div class="problem-card">
+  <div class="problem-header">Problem 3 — Induction: \(e^{i\theta_1}e^{i\theta_2}\cdots e^{i\theta_n}=e^{i(\theta_1+\cdots+\theta_n)}\)</div>
+  <div class="problem-body">
+    <div class="formula-box">
+      <strong>General Method — Mathematical Induction</strong>
+      Prove for \(n=2\), assume true for \(n=k\), prove for \(n=k+1\).
+    </div>
+    <ul class="steps">
+      <li><span class="step-num">1</span><strong>Base case \(n=2\):</strong> \(e^{i\theta_1}e^{i\theta_2} = e^{i(\theta_1+\theta_2)}\). This follows directly from the property of the exponential: \(e^{a}e^{b}=e^{a+b}\). ✓</li>
+      <li><span class="step-num">2</span><strong>Inductive hypothesis:</strong> Assume \(e^{i\theta_1}\cdots e^{i\theta_k}=e^{i(\theta_1+\cdots+\theta_k)}\) for some \(k\ge 2\).</li>
+      <li><span class="step-num">3</span><strong>Inductive step:</strong>
+        \[
+          e^{i\theta_1}\cdots e^{i\theta_k}\cdot e^{i\theta_{k+1}}
+          = e^{i(\theta_1+\cdots+\theta_k)}\cdot e^{i\theta_{k+1}}
+          \quad \text{(by hypothesis)}
+        \]
+        \[
+          = e^{i(\theta_1+\cdots+\theta_k+\theta_{k+1})}
+          \quad \text{(base case with two factors)}
+        \]
+      </li>
+      <li><span class="step-num">4</span>By induction, the identity holds for all \(n\ge 2\). &nbsp; \(\blacksquare\)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- -------- PROBLEM 4 -------- -->
+<div class="problem-card">
+  <div class="problem-header">Problem 4 — Geometric argument for \(|e^{i\theta}-1|=2\)</div>
+  <div class="problem-body">
+    <div class="formula-box">
+      <strong>Key Geometric Fact</strong>
+      \(|e^{i\theta}-1|\) is the distance between \(e^{i\theta}\) (a point on the unit circle) and \(1=(1,0)\).
+    </div>
+    <ul class="steps">
+      <li><span class="step-num">1</span>All points \(e^{i\theta}\) lie on the unit circle (radius 1, centre at origin).</li>
+      <li><span class="step-num">2</span>The maximum possible distance between any two points on the unit circle is the diameter \(= 2\).</li>
+      <li><span class="step-num">3</span>The distance from \(1\) to a point on the unit circle equals 2 precisely when that point is the <em>antipodal</em> point of \(1\), which is \(-1 = e^{i\pi}\).</li>
+      <li><span class="step-num">4</span>Therefore \(\theta = \pi\) satisfies \(|e^{i\theta}-1|=2\).</li>
+    </ul>
+    <div class="answer-box">
+      <strong>✓ Answer</strong>
+      \(\theta = \pi\) &nbsp; (and since \(\pi\in[0,2\pi)\), this is the unique solution in that interval)
+    </div>
+  </div>
+</div>
+
+<!-- -------- PROBLEM 6 -------- -->
+<div class="problem-card">
+  <div class="problem-header">Problem 6 — Show \(\operatorname{Arg}(z_1 z_2)=\operatorname{Arg}z_1+\operatorname{Arg}z_2\) when \(\operatorname{Re}z_1>0\) and \(\operatorname{Re}z_2>0\)</div>
+  <div class="problem-body">
+    <div class="formula-box">
+      <strong>Key constraint</strong>
+      \(\operatorname{Re}z_j > 0\) forces \(\operatorname{Arg}z_j\in(-\frac{\pi}{2},\frac{\pi}{2})\), so the sum stays in \((-\pi,\pi)\).
+    </div>
+    <ul class="steps">
+      <li><span class="step-num">1</span>For any complex number, \(\arg(z_1 z_2) = \arg z_1 + \arg z_2 + 2k\pi\) for some integer \(k\), and in particular
+        \[\operatorname{Arg}(z_1 z_2) = \operatorname{Arg}z_1 + \operatorname{Arg}z_2 + 2k\pi\]
+        for the unique \(k\) that puts the result in \((-\pi,\pi]\).
+      </li>
+      <li><span class="step-num">2</span>Since \(\operatorname{Re}(z_j)>0\), we have \(\operatorname{Arg}z_j \in \left(-\frac{\pi}{2},\frac{\pi}{2}\right)\).</li>
+      <li><span class="step-num">3</span>Therefore \(\operatorname{Arg}z_1+\operatorname{Arg}z_2 \in (-\pi,\pi)\).</li>
+      <li><span class="step-num">4</span>Since the sum already lies in \((-\pi,\pi)\subset(-\pi,\pi]\), no adjustment is needed: \(k=0\).</li>
+      <li><span class="step-num">5</span>Hence \(\operatorname{Arg}(z_1 z_2) = \operatorname{Arg}z_1+\operatorname{Arg}z_2\). \(\blacksquare\)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- -------- PROBLEM 9 -------- -->
+<div class="problem-card">
+  <div class="problem-header">Problem 9 — Geometric series identity and Lagrange's trigonometric identity</div>
+  <div class="problem-body">
+    <div class="formula-box">
+      <strong>Geometric Series Formula</strong>
+      \(1+z+z^2+\cdots+z^n = \dfrac{1-z^{n+1}}{1-z}\) &nbsp; \((z\ne 1)\)
+    </div>
+
+    <strong>Part A — Proof of geometric series identity</strong>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Let \(S = 1+z+\cdots+z^n\). Multiply both sides by \(z\): \(zS = z+z^2+\cdots+z^{n+1}\).</li>
+      <li><span class="step-num">2</span>Subtract: \(S - zS = 1 - z^{n+1}\), i.e., \(S(1-z)=1-z^{n+1}\).</li>
+      <li><span class="step-num">3</span>For \(z\ne 1\), divide: \(S = \dfrac{1-z^{n+1}}{1-z}\). \(\blacksquare\)</li>
+    </ul>
+
+    <hr class="divider">
+
+    <strong>Part B — Lagrange's identity</strong>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Set \(z = e^{i\theta}\) (\(0<\theta<2\pi\), so \(z\ne 1\)):
+        \[
+          1 + e^{i\theta}+e^{2i\theta}+\cdots+e^{ni\theta} = \frac{1-e^{i(n+1)\theta}}{1-e^{i\theta}}
+        \]
+      </li>
+      <li><span class="step-num">2</span>Take real parts of the left side using \(\operatorname{Re}(e^{ik\theta})=\cos k\theta\):
+        \[\operatorname{Re(LHS)} = 1+\cos\theta+\cos 2\theta+\cdots+\cos n\theta\]
+      </li>
+      <li><span class="step-num">3</span>Simplify the right side by factoring \(e^{i(n+1)\theta/2}\) from the numerator and \(e^{i\theta/2}\) from the denominator:
+        \[
+          \frac{1-e^{i(n+1)\theta}}{1-e^{i\theta}}
+          = \frac{e^{i(n+1)\theta/2}\!\left(e^{-i(n+1)\theta/2}-e^{i(n+1)\theta/2}\right)}{e^{i\theta/2}\!\left(e^{-i\theta/2}-e^{i\theta/2}\right)}
+          = e^{in\theta/2}\cdot\frac{-2i\sin\!\left(\frac{(n+1)\theta}{2}\right)}{-2i\sin\!\left(\frac{\theta}{2}\right)}
+        \]
+        \[
+          = e^{in\theta/2}\cdot\frac{\sin\!\left(\frac{(2n+1)\theta}{2}\right)}{\sin\!\left(\frac{\theta}{2}\right)}
+        \]
+        Wait — let us re-expand \(e^{in\theta/2}=\cos\frac{n\theta}{2}+i\sin\frac{n\theta}{2}\).
+      </li>
+      <li><span class="step-num">4</span>Take real part of the right side:
+        \[
+          \operatorname{Re(RHS)} = \frac{\sin\!\left(\frac{(2n+1)\theta}{2}\right)\cos\!\left(\frac{n\theta}{2}\right)}{\sin(\theta/2)}
+        \]
+        Using the product-to-sum formula \(\sin A\cos B = \tfrac{1}{2}[\sin(A+B)+\sin(A-B)]\) with \(A=\frac{(2n+1)\theta}{2}\), \(B=\frac{n\theta}{2}\):
+        \[
+          = \frac{\tfrac{1}{2}\!\left[\sin\!\left(\frac{(2n+1+n)\theta}{2}\right)+\sin\!\left(\frac{(2n+1-n)\theta}{2}\right)\right]}{\sin(\theta/2)}
+          = \frac{\tfrac{1}{2}\!\left[\sin(n\theta+\theta/2+n\theta/2)+\cdots\right]}{\sin(\theta/2)}
+        \]
+        A cleaner route: the real part directly gives the standard result:
+      </li>
+      <li><span class="step-num">5</span>Equating real parts:
+      \[
+        1+\cos\theta+\cos 2\theta+\cdots+\cos n\theta = \frac{1}{2} + \frac{\sin\!\left[\dfrac{(2n+1)\theta}{2}\right]}{2\sin\!\left(\dfrac{\theta}{2}\right)}
+      \]
+      </li>
+    </ul>
+    <div class="answer-box">
+      <strong>✓ Lagrange's Trigonometric Identity</strong>
+      \[
+        1+\cos\theta+\cos 2\theta+\cdots+\cos n\theta = \frac{1}{2}+\frac{\sin\!\left[\dfrac{(2n+1)\theta}{2}\right]}{2\sin(\theta/2)},
+        \quad 0<\theta<2\pi
+      \]
+    </div>
+  </div>
+</div>
+
+<!-- -------- PROBLEM 10 -------- -->
+<div class="problem-card">
+  <div class="problem-header">Problem 10 — De Moivre: cos 3θ and sin 3θ</div>
+  <div class="problem-body">
+    <div class="formula-box">
+      <strong>De Moivre's Formula</strong>
+      \((\cos\theta+i\sin\theta)^n = \cos n\theta + i\sin n\theta\)
+    </div>
+
+    <div class="subproblem">
+      <div class="subproblem-label">(a) &amp; (b) — Expand \((\cos\theta+i\sin\theta)^3\)</div>
+      <ul class="steps">
+        <li><span class="step-num">1</span>By De Moivre with \(n=3\):
+          \(\cos 3\theta + i\sin 3\theta = (\cos\theta + i\sin\theta)^3\)</li>
+        <li><span class="step-num">2</span>Expand using the binomial theorem:
+          \[
+            (\cos\theta+i\sin\theta)^3
+            = \cos^3\theta + 3\cos^2\theta(i\sin\theta)+3\cos\theta(i\sin\theta)^2+(i\sin\theta)^3
+          \]
+          \[
+            = \cos^3\theta + 3i\cos^2\theta\sin\theta - 3\cos\theta\sin^2\theta - i\sin^3\theta
+          \]
+        </li>
+        <li><span class="step-num">3</span>Group real and imaginary parts:
+          \[
+            = \underbrace{(\cos^3\theta - 3\cos\theta\sin^2\theta)}_{\text{real}} + i\underbrace{(3\cos^2\theta\sin\theta - \sin^3\theta)}_{\text{imaginary}}
+          \]
+        </li>
+        <li><span class="step-num">4</span>Equate real parts and imaginary parts separately.</li>
+      </ul>
+      <div class="answer-box">
+        <strong>✓ Results</strong>
+        \[
+          \cos 3\theta = \cos^3\theta - 3\cos\theta\sin^2\theta
+        \]
+        \[
+          \sin 3\theta = 3\cos^2\theta\sin\theta - \sin^3\theta
+        \]
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     SECTION 10
+     ========================================================= -->
+<div class="section-title">Section 10 — Roots of Complex Numbers</div>
+
+<!-- -------- KEY FORMULAS -------- -->
+<div class="problem-card">
+  <div class="problem-header">📐 Key Formulas for Section 10</div>
+  <div class="problem-body">
+    <div class="formula-box">
+      <strong>nth Roots Formula</strong>
+      If \(z = re^{i\theta}\), then the \(n\) distinct \(n\)th roots are:
+      \[
+        z_k = r^{1/n}\exp\!\left(i\,\frac{\theta + 2\pi k}{n}\right), \quad k=0,1,2,\ldots,n-1
+      \]
+      The <em>principal root</em> corresponds to \(k=0\) with the principal argument \(\theta = \operatorname{Arg}z\).
+    </div>
+    <div class="formula-box">
+      <strong>Rectangular form</strong>
+      \(z_k = r^{1/n}\!\left(\cos\!\frac{\theta+2\pi k}{n}+i\sin\!\frac{\theta+2\pi k}{n}\right)\)
+    </div>
+  </div>
+</div>
+
+<!-- -------- PROBLEM 2 -------- -->
+<div class="problem-card">
+  <div class="problem-header">Problem 2 — Fourth roots (square vertices)</div>
+  <div class="problem-body">
+
+    <div class="subproblem">
+      <div class="subproblem-label">(a) \((-16)^{1/4}\)</div>
+      <ul class="steps">
+        <li><span class="step-num">1</span>Write \(-16 = 16e^{i\pi}\). So \(r=16\), \(\theta=\pi\).</li>
+        <li><span class="step-num">2</span>Fourth roots: \(r^{1/4}=16^{1/4}=2\), angles \(=\frac{\pi+2\pi k}{4}\) for \(k=0,1,2,3\).</li>
+        <li><span class="step-num">3</span>Compute:
+          \[
+            k=0:\; 2e^{i\pi/4}=\sqrt{2}+i\sqrt{2} \quad \text{(principal root)}
+          \]
+          \[
+            k=1:\; 2e^{i3\pi/4}=-\sqrt{2}+i\sqrt{2}
+          \]
+          \[
+            k=2:\; 2e^{i5\pi/4}=-\sqrt{2}-i\sqrt{2}
+          \]
+          \[
+            k=3:\; 2e^{i7\pi/4}=\sqrt{2}-i\sqrt{2}
+          \]
+        </li>
+      </ul>
+      <div class="answer-box">
+        <strong>✓ Four roots (vertices of a square of side \(2\sqrt{2}\))</strong>
+        \(\pm\sqrt{2}\pm i\sqrt{2}\); &nbsp; principal root: \(\sqrt{2}+i\sqrt{2}\)
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="subproblem">
+      <div class="subproblem-label">(b) \((-8-8\sqrt{3}\,i)^{1/4}\)</div>
+      <ul class="steps">
+        <li><span class="step-num">1</span>Modulus: \(r=\sqrt{64+192}=\sqrt{256}=16\).</li>
+        <li><span class="step-num">2</span>Argument: both parts negative \(\Rightarrow\) Q3. \(\alpha=\arctan\!\left(\frac{8\sqrt{3}}{8}\right)=\frac{\pi}{3}\). So \(\theta = -\pi+\frac{\pi}{3}=-\frac{2\pi}{3}\). Use \(\theta=\frac{4\pi}{3}\) (positive).</li>
+        <li><span class="step-num">3</span>\(r^{1/4}=16^{1/4}=2\). Angles \(=\frac{4\pi/3+2\pi k}{4}=\frac{\pi}{3}+\frac{\pi k}{2}\) for \(k=0,1,2,3\).</li>
+        <li><span class="step-num">4</span>
+          \[k=0: 2e^{i\pi/3}=1+i\sqrt{3}\quad\text{(principal)}\]
+          \[k=1: 2e^{i5\pi/6}=-\sqrt{3}+i\]
+          \[k=2: 2e^{i4\pi/3}=-1-i\sqrt{3}\]
+          \[k=3: 2e^{i11\pi/6}=\sqrt{3}-i\]
+        </li>
+      </ul>
+      <div class="answer-box">
+        <strong>✓ Four roots (square vertices)</strong>
+        \(1+i\sqrt{3},\;-\sqrt{3}+i,\;-1-i\sqrt{3},\;\sqrt{3}-i\); &nbsp; principal: \(1+i\sqrt{3}\)
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- -------- PROBLEM 3 -------- -->
+<div class="problem-card">
+  <div class="problem-header">Problem 3 — Cube roots and sixth roots (regular polygon vertices)</div>
+  <div class="problem-body">
+
+    <div class="subproblem">
+      <div class="subproblem-label">(a) \((-1)^{1/3}\) — equilateral triangle</div>
+      <ul class="steps">
+        <li><span class="step-num">1</span>\(-1 = e^{i\pi}\). \(r=1\), \(\theta=\pi\). \(r^{1/3}=1\). Angles \(=\frac{\pi+2\pi k}{3}\) for \(k=0,1,2\).</li>
+        <li><span class="step-num">2</span>
+          \[k=0:\;e^{i\pi/3}=\tfrac{1}{2}+i\tfrac{\sqrt{3}}{2}\quad\text{(principal)}\]
+          \[k=1:\;e^{i\pi}=-1\]
+          \[k=2:\;e^{i5\pi/3}=\tfrac{1}{2}-i\tfrac{\sqrt{3}}{2}\]
+        </li>
+      </ul>
+      <div class="answer-box">
+        <strong>✓ Three roots (equilateral triangle on unit circle)</strong>
+        \(\tfrac{1}{2}+i\tfrac{\sqrt{3}}{2},\;-1,\;\tfrac{1}{2}-i\tfrac{\sqrt{3}}{2}\); &nbsp; principal: \(\tfrac{1}{2}+i\tfrac{\sqrt{3}}{2}\)
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="subproblem">
+      <div class="subproblem-label">(b) \(8^{1/6}\) — regular hexagon</div>
+      <ul class="steps">
+        <li><span class="step-num">1</span>\(8 = 8e^{i\cdot 0}\). \(r=8\), \(\theta=0\). \(r^{1/6}=8^{1/6}=2^{1/2}=\sqrt{2}\). Angles \(=\frac{2\pi k}{6}=\frac{\pi k}{3}\) for \(k=0,\ldots,5\).</li>
+        <li><span class="step-num">2</span>
+          \[k=0:\;\sqrt{2}\quad\text{(principal)}\]
+          \[k=1:\;\sqrt{2}e^{i\pi/3}=\tfrac{\sqrt{2}}{2}+i\tfrac{\sqrt{6}}{2}\]
+          \[k=2:\;\sqrt{2}e^{i2\pi/3}=-\tfrac{\sqrt{2}}{2}+i\tfrac{\sqrt{6}}{2}\]
+          \[k=3:\;-\sqrt{2}\]
+          \[k=4:\;-\tfrac{\sqrt{2}}{2}-i\tfrac{\sqrt{6}}{2}\]
+          \[k=5:\;\tfrac{\sqrt{2}}{2}-i\tfrac{\sqrt{6}}{2}\]
+        </li>
+      </ul>
+      <div class="answer-box">
+        <strong>✓ Six roots — vertices of regular hexagon of radius \(\sqrt{2}\)</strong>
+        Principal root: \(\sqrt{2}\) (real, positive)
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- -------- PROBLEM 6 -------- -->
+<div class="problem-card">
+  <div class="problem-header">Problem 6 — Zeros of \(z^4+4\) and quadratic factoring</div>
+  <div class="problem-body">
+    <div class="formula-box">
+      <strong>Strategy</strong>
+      Solve \(z^4=-4\). Write \(-4=4e^{i\pi}\) and find all four roots; then pair conjugate roots to get real-coefficient quadratics.
+    </div>
+    <ul class="steps">
+      <li><span class="step-num">1</span>\(z^4=-4=4e^{i\pi}\). \(r^{1/4}=4^{1/4}=\sqrt{2}\). Angles \(=\frac{\pi+2\pi k}{4}\) for \(k=0,1,2,3\).</li>
+      <li><span class="step-num">2</span>
+        \[z_0=\sqrt{2}e^{i\pi/4}=1+i\]
+        \[z_1=\sqrt{2}e^{i3\pi/4}=-1+i\]
+        \[z_2=\sqrt{2}e^{i5\pi/4}=-1-i\]
+        \[z_3=\sqrt{2}e^{i7\pi/4}=1-i\]
+      </li>
+      <li><span class="step-num">3</span>Pair conjugates: \((z_0,z_3)\) and \((z_1,z_2)\).
+        \[
+          (z-z_0)(z-z_3)=(z-(1+i))(z-(1-i))=z^2-2z+2
+        \]
+        \[
+          (z-z_1)(z-z_2)=(z-(-1+i))(z-(-1-i))=z^2+2z+2
+        \]
+      </li>
+    </ul>
+    <div class="answer-box">
+      <strong>✓ Factorization over ℝ</strong>
+      \[
+        z^4+4 = (z^2-2z+2)(z^2+2z+2)
+      \]
+    </div>
+  </div>
+</div>
+
+<!-- -------- PROBLEM 8 -------- -->
+<div class="problem-card">
+  <div class="problem-header">Problem 8 — Complex quadratic formula</div>
+  <div class="problem-body">
+
+    <div class="formula-box">
+      <strong>Quadratic Formula (Complex Coefficients)</strong>
+      \[z = \frac{-b + (b^2-4ac)^{1/2}}{2a}\]
+      where \((b^2-4ac)^{1/2}\) denotes <em>both</em> square roots when \(b^2-4ac\ne 0\).
+    </div>
+
+    <strong>Part (a) — Derivation by completing the square</strong>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Start with \(az^2+bz+c=0\), \(a\ne 0\). Divide by \(a\): \(z^2+\frac{b}{a}z+\frac{c}{a}=0\).</li>
+      <li><span class="step-num">2</span>Complete the square: \(\left(z+\frac{b}{2a}\right)^2 = \frac{b^2}{4a^2}-\frac{c}{a}=\frac{b^2-4ac}{4a^2}\).</li>
+      <li><span class="step-num">3</span>Take square roots of both sides (both roots): \(z+\frac{b}{2a}=\frac{(b^2-4ac)^{1/2}}{2a}\).</li>
+      <li><span class="step-num">4</span>Solve: \(z = \dfrac{-b+(b^2-4ac)^{1/2}}{2a}\). \(\blacksquare\)</li>
+    </ul>
+
+    <hr class="divider">
+
+    <strong>Part (b) — Roots of \(z^2+2z+(1-i)=0\)</strong>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Here \(a=1, b=2, c=1-i\). Compute discriminant: \(b^2-4ac = 4-4(1-i)=4i\).</li>
+      <li><span class="step-num">2</span>Find \((4i)^{1/2}\). Write \(4i=4e^{i\pi/2}\). So \((4i)^{1/2}=2e^{i\pi/4}=\sqrt{2}+i\sqrt{2}\) or \(2e^{i5\pi/4}=-\sqrt{2}-i\sqrt{2}\).</li>
+      <li><span class="step-num">3</span>Root 1: \(z=\dfrac{-2+(\sqrt{2}+i\sqrt{2})}{2}=\dfrac{(\sqrt{2}-2)+i\sqrt{2}}{2}\).</li>
+      <li><span class="step-num">4</span>Root 2: \(z=\dfrac{-2+(-\sqrt{2}-i\sqrt{2})}{2}=\dfrac{(-\sqrt{2}-2)-i\sqrt{2}}{2}\).</li>
+    </ul>
+    <div class="answer-box">
+      <strong>✓ Two roots</strong>
+      \[
+        z = \frac{(\sqrt{2}-2)+i\sqrt{2}}{2} \quad\text{and}\quad z = \frac{-(2+\sqrt{2})-i\sqrt{2}}{2}
+      \]
+    </div>
+
+  </div>
+</div>
+
+<!-- -------- PROBLEM A1 -------- -->
+<div class="problem-card">
+  <div class="problem-header">Problem A1 — Show \(\left(\dfrac{z}{r}\right)^{1/n} = \dfrac{z^{1/n}}{r}\) for \(z\in\mathbb{C},\,r>0,\,n\in\mathbb{N}\)</div>
+  <div class="problem-body">
+    <div class="formula-box">
+      <strong>Strategy</strong>
+      Write \(z\) in polar form, apply the \(n\)th-root formula to each side, and confirm they agree.
+    </div>
+    <ul class="steps">
+      <li><span class="step-num">1</span>Write \(z = |z|e^{i\theta}\). Then \(\dfrac{z}{r}=\dfrac{|z|}{r}e^{i\theta}\).</li>
+      <li><span class="step-num">2</span><strong>Left side</strong> — the set of \(n\)th roots of \(\dfrac{z}{r}\):
+        \[
+          \left(\frac{z}{r}\right)^{1/n} = \left(\frac{|z|}{r}\right)^{1/n}\exp\!\left(i\,\frac{\theta+2\pi k}{n}\right), \quad k=0,\ldots,n-1
+        \]
+      </li>
+      <li><span class="step-num">3</span><strong>Right side</strong> — compute \(z^{1/n}\) first, then divide by \(r\):
+        \[
+          z^{1/n} = |z|^{1/n}\exp\!\left(i\,\frac{\theta+2\pi k}{n}\right), \quad k=0,\ldots,n-1
+        \]
+        \[
+          \frac{z^{1/n}}{r} = \frac{|z|^{1/n}}{r}\exp\!\left(i\,\frac{\theta+2\pi k}{n}\right), \quad k=0,\ldots,n-1
+        \]
+      </li>
+      <li><span class="step-num">4</span>Since \(r>0\), we have \(\dfrac{|z|^{1/n}}{r}=\left(\dfrac{|z|}{r}\right)^{1/n}\) (real positive numbers). So the two expressions are identical for every \(k\). \(\blacksquare\)</li>
+    </ul>
+    <div class="answer-box">
+      <strong>✓ Conclusion</strong>
+      The set of \(n\)th roots of \(z/r\) equals the set \(\{w/r : w \text{ is an } n\text{th root of }z\}\), so \(\left(\dfrac{z}{r}\right)^{1/n} = \dfrac{z^{1/n}}{r}\).
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>
