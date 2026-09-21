@@ -1,0 +1,9 @@
+https://www.cs.odu.edu/~zeil/cs390/latest/Public/turing-jflap/index.html
+https://www.tutorialspoint.com/automata_theory/
+https://www.geeksforgeeks.org/theory-of-computation/
+https://edurev.in/t/99887/cse-notes-tm-as-transducers
+https://www.cs.sjsu.edu/faculty/pollett/154.3.07s/Lec11042007.pdf
+https://opendsa-server.cs.vt.edu/OpenDSA/Books/PIFLA/html/TuringMachines.html
+https://www.gatevidyalay.com/theory-of-automata-computation/
+https://fla-amrt.vlabs.ac.in/exp/convert-nfa-to-re/theory.html
+https://cstaleem.com/theory-of-automata
