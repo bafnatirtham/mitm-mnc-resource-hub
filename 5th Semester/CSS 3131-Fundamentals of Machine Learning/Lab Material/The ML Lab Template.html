@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The ML Lab Template: one pipeline for every question</title>
+<style>
+:root{--bg:#f6f8fa;--card:#fff;--ink:#16202a;--mut:#56626f;--ac:#0b6e8a;--ln:#d5dce3;--code:#0f1b26;--cf:#d8e6f0;--cm:#7fa6bd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#10171e;--card:#17212b;--ink:#e6edf3;--mut:#9aa8b5;--ac:#4cc3e0;--ln:#2b3946;--code:#0a1117;--cf:#c9dbe8}}
+*{box-sizing:border-box}html{color-scheme:light dark;scroll-padding-top:60px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,'Segoe UI',sans-serif}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border-bottom:1px solid var(--ln);display:flex;gap:4px;overflow-x:auto;padding:8px 12px;z-index:5}
+nav a{color:var(--ink);text-decoration:none;padding:4px 10px;border-radius:6px;white-space:nowrap;font-size:14px}nav a:hover{background:var(--ln)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:2rem;line-height:1.2;margin:.2em 0}h2{font-size:1.4rem;margin:2em 0 .5em;border-bottom:2px solid var(--ac);padding-bottom:4px}h3{font-size:1.05rem;margin:1.4em 0 .3em;color:var(--ac)}
+p,li{max-width:70ch}.mut{color:var(--mut)}
+pre{background:var(--code);color:var(--cf);padding:12px 14px;border-radius:6px;overflow-x:auto;font:13px/1.5 ui-monospace,Menlo,Consolas,monospace;position:relative;margin:.6em 0}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9em;background:var(--ln);padding:1px 5px;border-radius:4px}pre code{background:none;padding:0}
+button.cp{position:absolute;top:6px;right:6px;background:#2b3946;color:#e6edf3;border:0;border-radius:4px;padding:2px 8px;font-size:12px;cursor:pointer}
+button.cp:focus-visible,summary:focus-visible,nav a:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+details{background:var(--card);border:1px solid var(--ln);border-radius:8px;padding:4px 16px;margin:12px 0}summary{cursor:pointer;font-weight:600;padding:8px 0}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border:1px solid var(--ln);padding:6px 8px;text-align:left;vertical-align:top}th{background:var(--card)}
+.warn{border-left:4px solid #c27a00;background:var(--card);padding:8px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+</style></head><body>
+<nav><a href="#how">How to use</a><a href="#read">Read the question</a><a href="#master">Master template</a><a href="#arch">Scratch archetypes</a><a href="#sweep">Sweeps &amp; plots</a><a href="#find">Find syntax</a><a href="#debug">Debug</a><a href="#train">Train yourself</a></nav>
+<main>
+<h1>One template for every lab question</h1>
+<p class="mut">No lab answers here on purpose. This page teaches the method: read any question, scaffold it as comments, fill each comment with a known pattern, and look up whatever you forget inside the notebook.</p>
+
+<h2 id="how">1. The method in one paragraph</h2>
+<p>Every lab question is the same story: <b>data in, a rule that turns data into predictions or groups, a number that says how good it is, a plot</b>. You never write a program from nothing. You (a) translate the question into a comment scaffold, (b) pick the pattern that matches the task, (c) fill each comment with 1 to 3 lines, (d) print after every step.</p>
+
+<h2 id="read">2. Step 0: turn the question into a scaffold (2 minutes)</h2>
+<p>Underline four things in the question, then write them as comments <b>before any code</b>.</p>
+<table><tr><th>Underline</th><th>Tells you</th><th>Becomes</th></tr>
+<tr><td>Nouns: dataset, columns, “CSV”, “array”</td><td>Data source and X/y</td><td>Steps 1 to 3</td></tr>
+<tr><td>Verbs: predict, classify, group, compare, vary</td><td>Task family (table below)</td><td>Model or algorithm</td></tr>
+<tr><td>Constraints: “without scikit-learn”, “80/20”, “k=3”, “4 epochs”</td><td>Scratch vs library, split, hyperparameters</td><td>Template variant, <code>test_size</code>, loop counts</td></tr>
+<tr><td>Outputs: accuracy, MSE, SSE, “plot X vs Y”, “table”</td><td>Evaluation and plots</td><td>Steps 9 and 10</td></tr></table>
+<h3>Which task family?</h3>
+<div class="tw"><table><tr><th>If the question says…</th><th>Family</th><th>Metric</th><th>Pattern</th></tr>
+<tr><td>predict a number (price, mpg, salary)</td><td>Regression</td><td>MSE, RMSE, R²</td><td>Template A or archetype 1</td></tr>
+<tr><td>predict a category (yes/no, species, spam)</td><td>Classification</td><td>accuracy, precision, recall, log loss</td><td>Template A or archetypes 2, 3, 4</td></tr>
+<tr><td>group without labels</td><td>Clustering</td><td>SSE / inertia, elbow</td><td>Archetype 5</td></tr>
+<tr><td>“vary / try different values of …”</td><td>Parameter sweep</td><td>one metric per value</td><td>Section 5 loop</td></tr>
+<tr><td>“manually / from scratch / write a function”</td><td>Scratch variant</td><td>same metric</td><td>Section 4 archetype</td></tr></table></div>
+<p>Example scaffold you would type first, for any question:</p>
+<pre># 1 load data          # 2 inspect           # 3 split X / y
+# 4 preprocess         # 5 train/test split   # 6 build model / write function
+# 7 fit                # 8 predict            # 9 evaluate (metric: ___)
+# 10 plot (x=___, y=___)  # 11 one-line interpretation</pre>
+
+<h2 id="master">3. Template A: the master pipeline (library version)</h2>
+<p>Memorise this skeleton. Only the highlighted blanks <code>___</code> change between questions.</p>
+<pre># ---- 0 imports ----
+import numpy as np, pandas as pd, matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.___ import ___                 # model: module = family, class = name
+from sklearn.metrics import ___             # metric(s)
+
+# ---- 1 load ----
+df = pd.read_csv('___.csv')                 # or pd.DataFrame({...}) / np.array([...])
+
+# ---- 2 inspect (never skip) ----
+print(df.shape); print(df.head()); df.info(); print(df.describe()); print(df.isna().sum())
+
+# ---- 3 X and y ----
+X = df.drop(columns='___')                  # features
+y = df['___']                               # target (what we predict); none for clustering
+
+# ---- 4 preprocess ----
+# text columns -> numbers: X = pd.get_dummies(X)   | missing: df.fillna(df.mean())
+# single feature must be 2-D: X = df[['col']]  (double brackets)
+
+# ---- 5 split ----
+Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# ---- 6 model ----
+model = ___(param=___)
+
+# ---- 7 fit (learn from TRAIN only) ----
+model.fit(Xtr, ytr)
+
+# ---- 8 predict ----
+pred = model.predict(Xte)
+
+# ---- 9 evaluate (compare TEST truth with predictions) ----
+print(___(yte, pred))
+
+# ---- 10 visualise ----
+plt.scatter(___, ___); plt.xlabel('___'); plt.ylabel('___'); plt.title('___'); plt.show()</pre>
+<h3>Why this order (so you can rebuild it without memory)</h3>
+<ol><li>Imports first because every later line uses them.</li><li>Inspect before touching data: wrong column names and missing values show up here.</li><li>X and y before split so features and labels stay aligned.</li><li>Preprocess before split on anything that does not learn from data (encoding); fit anything that learns (scaling) on train only.</li><li>Split before fit, or the test score is fake.</li><li><code>fit</code> then <code>predict</code> then <code>metric(truth, prediction)</code>: the argument order is always truth first.</li></ol>
+<h3>sklearn’s one rhythm</h3>
+<p>Every model: <code>Model(params)</code> → <code>.fit(X, y)</code> → <code>.predict(X)</code> → <code>.score(X, y)</code>. Clustering skips y: <code>.fit(X)</code> and reads <code>.labels_</code>. Only the class name and its parameters change.</p>
+<table><tr><th>Family</th><th>Module</th><th>Typical classes</th></tr>
+<tr><td>linear models</td><td><code>sklearn.linear_model</code></td><td>LinearRegression, LogisticRegression, SGDRegressor, SGDClassifier</td></tr>
+<tr><td>neighbours</td><td><code>sklearn.neighbors</code></td><td>KNeighborsClassifier</td></tr>
+<tr><td>probabilistic</td><td><code>sklearn.naive_bayes</code></td><td>GaussianNB, MultinomialNB</td></tr>
+<tr><td>trees</td><td><code>sklearn.tree</code></td><td>DecisionTreeClassifier, plot_tree</td></tr>
+<tr><td>clustering</td><td><code>sklearn.cluster</code></td><td>KMeans</td></tr>
+<tr><td>features</td><td><code>sklearn.preprocessing</code>, <code>.feature_extraction.text</code></td><td>PolynomialFeatures, StandardScaler, CountVectorizer</td></tr>
+<tr><td>metrics</td><td><code>sklearn.metrics</code></td><td>mean_squared_error, r2_score, accuracy_score, classification_report, log_loss</td></tr></table>
+
+<h2 id="arch">4. Template B: “without scikit-learn” has only five shapes</h2>
+<p>Every from-scratch algorithm in the labs is one of these five. Identify the shape, write its skeleton, fill in the maths.</p>
+<h3>Shape 1: iterative optimiser (regression, logistic, gradient descent)</h3>
+<pre>params = initial values (0)                 # init
+for epoch in range(E):                      # repeat
+    for xi, yi in zip(x, y):                # SGD: row by row (batch: all rows at once)
+        pred = f(params, xi)                # forward
+        err = pred - yi                     # error
+        params -= lr * gradient(err, xi)    # update
+        history.append(loss)                # record for the plot</pre>
+<p>Maths blanks: <code>f</code> (line, or sigmoid of line), loss (squared error or log loss), gradient. Closed-form alternative: <code>np.linalg.inv(X.T @ X) @ X.T @ y</code> with a column of ones in X.</p>
+<h3>Shape 2: distance and vote (KNN)</h3>
+<pre>def predict_one(q):
+    d = distance(X_train, q)                # vectorised: np.sqrt(((X-q)**2).sum(axis=1))
+    nearest = np.argsort(d)[:k]             # indices of k smallest
+    return most_common(y_train[nearest])    # Counter(...).most_common(1)[0][0]</pre>
+<h3>Shape 3: count and multiply (Naive Bayes)</h3>
+<pre>train:   priors[c] = share of rows in class c
+         likelihood[c][feature][value] = share of class-c rows with that value
+predict: score[c] = priors[c] * product(likelihood[c][f][v] for each feature)
+         answer = class with the largest score (evidence cancels, so skip it)</pre>
+<h3>Shape 4: score, split, recurse (decision tree)</h3>
+<pre>def build(data, attrs):
+    if all labels same: return that label        # base case 1
+    if no attrs left:   return majority label    # base case 2
+    best = attribute with max score(data, a)     # entropy gain, gain ratio or gini
+    return {best: {value: build(subset, attrs minus best) for value, subset in groups}}</pre>
+<h3>Shape 5: assign and update (K-Means)</h3>
+<pre>centres = k random rows
+repeat until centres stop moving (or max iterations):
+    labels = index of nearest centre for every row     # assignment
+    centres = mean of the rows in each cluster         # update
+sse = sum of squared distances to own centre</pre>
+<div class="warn"><b>Rule:</b> write the shape as comments first, then replace each comment with code. If a line feels hard, you are missing a maths blank, not a Python skill; write the formula on paper first.</div>
+<h3>Metrics from scratch (all are one-liners)</h3>
+<pre>mse  = np.mean((y - pred)**2);  rmse = np.sqrt(mse)
+r2   = 1 - np.sum((y-pred)**2) / np.sum((y-y.mean())**2)
+acc  = np.mean(y == pred)
+tp = np.sum((y==1)&(pred==1)); fp = np.sum((y==0)&(pred==1)); fn = np.sum((y==1)&(pred==0))
+precision = tp/(tp+fp); recall = tp/(tp+fn)
+logloss = -np.mean(y*np.log(p) + (1-y)*np.log(1-p))</pre>
+
+<h2 id="sweep">5. Sweeps, comparisons and plots</h2>
+<p>“Try different values of …” and “compare …” are the same loop: <b>loop over a parameter, store one number per value, plot it</b>.</p>
+<pre>values, results = [1,3,5,7], []              # the thing being varied
+for v in values:
+    model = ___(param=v).fit(Xtr, ytr)       # or call your scratch function with v
+    results.append(metric(yte, model.predict(Xte)))
+plt.plot(values, results, marker='o'); plt.xlabel('param'); plt.ylabel('metric'); plt.show()</pre>
+<table><tr><th>Plot need</th><th>Call</th></tr>
+<tr><td>relationship, clusters, raw data</td><td><code>plt.scatter(x, y, c=labels)</code></td></tr>
+<tr><td>metric vs parameter / iteration</td><td><code>plt.plot(x, y, marker='o')</code></td></tr>
+<tr><td>distribution</td><td><code>plt.hist(col)</code> or <code>df[col].hist()</code></td></tr>
+<tr><td>categories</td><td><code>plt.bar(names, values)</code></td></tr>
+<tr><td>several lines</td><td>one <code>plt.plot(..., label='a')</code> per line, then <code>plt.legend()</code></td></tr>
+<tr><td>separate figures</td><td><code>plt.figure()</code> before each, <code>plt.show()</code> at the end</td></tr>
+<tr><td>decision boundary</td><td><code>np.meshgrid</code> grid → <code>predict(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)</code> → <code>plt.contourf</code></td></tr></table>
+<p>Always label both axes and add a title; graders look for them.</p>
+
+<h2 id="find">6. Find the syntax inside the notebook (before you write the step)</h2>
+<p>When you cannot recall a class, parameter or method, run this routine instead of guessing.</p>
+<ol><li><b>Which module?</b> <code>import sklearn.cluster as m; dir(m)</code> lists the classes. Or type <code>from sklearn.cluster import </code> and press Tab.</li>
+<li><b>What does it need?</b> <code>help(KMeans)</code> or <code>KMeans?</code>. Read in this order: the one-line summary, <b>Parameters</b> (names and defaults), <b>Attributes</b> (what exists after fit, ending in <code>_</code>), <b>Examples</b> (copy this).</li>
+<li><b>What can I call?</b> Type <code>model.</code> then Tab, or <code>dir(model)</code>.</li>
+<li><b>What are the inputs?</b> Shift+Tab inside the brackets shows the signature.</li>
+<li><b>What did I get back?</b> <code>type(x)</code>, <code>x.shape</code>, <code>print(x)</code>, <code>df.dtypes</code>.</li>
+<li><b>Source code?</b> <code>KMeans??</code> if you want to see exactly what it does.</li></ol>
+<table><tr><th>Need</th><th>Command</th></tr>
+<tr><td>Numpy function name</td><td><code>np.lookfor('standard deviation')</code> searches docstrings</td></tr>
+<tr><td>Pandas method name</td><td><code>[m for m in dir(df) if 'sum' in m]</code></td></tr>
+<tr><td>Docstring examples</td><td>Scroll to the bottom of <code>help(...)</code></td></tr>
+<tr><td>Library version</td><td><code>import sklearn; sklearn.__version__</code></td></tr>
+<tr><td>Current variables</td><td><code>%whos</code> (Jupyter)</td></tr></table>
+
+<h2 id="debug">7. Debug by reading the error</h2>
+<p>Read the <b>last line</b> of the error first; it names the problem. Then print the thing it complains about.</p>
+<table><tr><th>Message contains</th><th>Meaning</th><th>Fix</th></tr>
+<tr><td>NameError</td><td>Name not defined (typo, missing import, cell not run)</td><td>Check spelling; rerun cells in order</td></tr>
+<tr><td>KeyError</td><td>Column or key does not exist</td><td><code>print(df.columns)</code>, watch spaces and case</td></tr>
+<tr><td>Expected 2D array, got 1D</td><td>sklearn wants (rows, columns)</td><td><code>df[['c']]</code> or <code>x.reshape(-1,1)</code>; one sample is <code>[[a,b]]</code></td></tr>
+<tr><td>could not convert string to float</td><td>Text in X</td><td><code>pd.get_dummies(X)</code> or encode labels</td></tr>
+<tr><td>shapes not aligned / inconsistent samples</td><td>X and y lengths differ, or wrong matrix order</td><td>print both <code>.shape</code>; check transposes</td></tr>
+<tr><td>NotFittedError</td><td>predicted before <code>fit</code></td><td>run the <code>fit</code> cell</td></tr>
+<tr><td>IndentationError / SyntaxError</td><td>Block spacing, missing colon or bracket</td><td>4 spaces per level; colon after <code>for/if/def</code></td></tr>
+<tr><td>divide by zero, log of 0, nan</td><td>Empty group, probability of exactly 0 or 1</td><td>guard with <code>if</code>; <code>np.clip(p,1e-9,1-1e-9)</code>; smoothing</td></tr>
+<tr><td>Loss grows or becomes nan</td><td>Learning rate too large</td><td>divide <code>lr</code> by 10</td></tr>
+<tr><td>Result looks wrong but no error</td><td>Logic slip</td><td>run on a 3-row dataset and check by hand</td></tr></table>
+<p>The 3-row check is the strongest debugging tool you have: tiny data, print every intermediate, compare with a hand calculation.</p>
+
+<h2 id="train">8. Train the pipeline, not the answers</h2>
+<h3>Reconstruction ladder (repeat for every topic)</h3>
+<ol><li><b>Scaffold only:</b> write the 11 comment lines for a new question, no code.</li>
+<li><b>Fill from the template</b> with the manuals closed; use only <code>help()</code> for gaps.</li>
+<li><b>Swap one thing:</b> a different model, metric, distance, split or dataset. If the swap breaks, you learn which line is the real dependency.</li>
+<li><b>Re-do from scratch version</b> of the same task using the matching shape in section 4.</li>
+<li><b>Timed run:</b> 30 minutes, blank notebook, random question.</li></ol>
+<h3>Review schedule</h3>
+<p>Day 1 write it, day 2 rewrite, day 4 rewrite with a change, day 8 timed. Mark each template <i>blank / hints / revise</i>.</p>
+<h3>Exam-time checklist</h3>
+<ul><li>Scaffold comments written?</li><li>Printed <code>head()</code> and shapes?</li><li>Split before fit?</li><li>Metric uses test truth first, prediction second?</li><li>Axes labelled and <code>plt.show()</code> called?</li><li>One sentence interpreting the result?</li></ul>
+<p class="mut">Tell me which of the five shapes feels weakest and I will give you a fresh blank-notebook exercise on it and mark your attempt.</p>
+</main>
+<script>
+document.querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.className='cp';b.textContent='Copy';b.onclick=()=>{try{navigator.clipboard.writeText(p.innerText.replace(/Copy$/,'').trim());b.textContent='Copied'}catch(e){b.textContent='Select text'}setTimeout(()=>b.textContent='Copy',1200)};p.appendChild(b)});
+</script></body></html>
